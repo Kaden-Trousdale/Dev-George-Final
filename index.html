@@ -86,12 +86,24 @@
     <!-- Add/Edit Form -->
      <h3>Enter your recipe here!</h3>
     <form id="dataForm">
-      <input type="text" id="entryTitle" class="form-control mb-2" placeholder="Title" required>
-      <input type="text" id="entryIngredients" class="form-control mb-2" placeholder="Ingredients" required>
-      <textarea id="entryInstructions" class="form-control mb-2" placeholder="Instructions" required></textarea>
-      <button type="submit" class="btn btn-primary">Add Recipe!</button>
-      <button type="button" id="loadSample" class="btn btn-secondary">Load Example!</button>
-    </form>
+  <div class="mb-2">
+    <label for="entryTitle" class="form-label">Recipe Title</label>
+    <input type="text" id="entryTitle" class="form-control" placeholder="Title" required>
+  </div>
+
+  <div class="mb-2">
+    <label for="entryIngredients" class="form-label">Ingredients</label>
+    <input type="text" id="entryIngredients" class="form-control" placeholder="Ingredients" required>
+  </div>
+
+  <div class="mb-2">
+    <label for="entryInstructions" class="form-label">Instructions</label>
+    <textarea id="entryInstructions" class="form-control" placeholder="Instructions" required></textarea>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Add Recipe!</button>
+  <button type="button" id="loadSample" class="btn btn-secondary">Load Example!</button>
+</form>
     <!-- Export Button -->
       <button class="btn btn-info mt-3" id="exportData">Export Data!</button>
 
