@@ -1,49 +1,108 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>🦭 Easy Facts Page 🦭</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://public.codepenassets.com/css/normalize-5.0.0.min.css">
-  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css'>
-  <link rel="stylesheet" href="styles/charlie-style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DevAble Redux</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles/charlie-style.css"/>
 </head>
-<body class="d-flex flex-column min-vh-100">
+<body>
 
-  <!-- FORMAT MADE BY github.com/barrycumbie -->
-<nav class="navbar  navbar-dark bg-dark">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="index.html"><img src="images/wave-seal.gif" alt="Seal" width="80" height="60"> Easy the Space Seal's Fun Silly Facts!</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+  <!-- Navbar -->
+  <nav class="navbar navbar-dark bg-dark fixed">
+    <div class="container-fluid d-flex justify-content-between align-items-center">
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <img src="https://png.pngtree.com/png-clipart/20240329/original/pngtree-chef-seal-vector-png-image_14711663.png" alt="Seal" width="100" height="80" class="me-2">
+        Seal Chef's Questionable Recipes
+      </a>
+  
+      <div class="d-flex align-items-center">
+        <!-- Login area -->
+        <div id="loginArea" class="me-2">
+          <button class="btn btn-outline-light" id="loginBtn" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
+        </div>
+  
+        <!-- Hamburger menu -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+    </div>
+  
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav text-end pe-3">
+        <li class="nav-item">
+          <a class="nav-link active" href="index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="images/Wireframe.jpg" target="_blank">Wireframe</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  
+  
+  
+  
+
+  <!-- Login Modal -->
+  <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content bg-dark text-light">
+        <div class="modal-header">
+          <h5 class="modal-title" id="loginModalLabel">User Login</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="loginForm">
+            <div class="mb-3">
+              <label for="username" class="form-label">Name</label>
+              <input type="text" class="form-control" id="username" required>
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input type="password" class="form-control" id="password" required>
+            </div>
+            <button type="button" class="btn btn-primary" id="submitLogin">Login</button>
+          </form>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav float-right text-right pr-3">
-      <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="index.html">Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="images/Wireframe.jpg" target="_blank">Wireframe</a>
-      </li>
-    </ul>
-  </div>
-</nav>
+  
 
-<div>
-  <!-- Sorting Buttons -->
-  <button id="sort-title">Sort by Title</button>
-  <button id="sort-description">Sort by Description</button>
-  <button id="sort-random">Random Sort</button>
-</div>
-<div id="liked-cards-container">
-  <br>
-</div>
-<div class="cards-container justify-content-around" id="cards-container">
-    <!-- Cards will be generated here -->
-</div>
+  <!-- Main Content -->
+  <div class="container my-4" id="content-body">
+    <header>
+      <h1><strong>Possibly Edible Recipes</strong></h1>
+      <p>Have you ever wanted to cook something that you had to be scared to eat? Well you found the right place! Any aspiring chef, criminal, culinary student, or aquatic animal can create and post their own fun and tasty dish.</p>
+      <p><strong>DISCLAIMER: </strong>For legal reasons, do not eat any of these food items!</p>
+    </header>
+    <br><br>
 
+    <!-- Add/Edit Form -->
+     <h3>Enter your recipe here!</h3>
+    <form id="dataForm">
+      <input type="text" id="entryTitle" class="form-control mb-2" placeholder="Title" required>
+      <input type="text" id="entryIngredients" class="form-control mb-2" placeholder="Ingredients" required>
+      <textarea id="entryInstructions" class="form-control mb-2" placeholder="Instructions" required></textarea>
+      <button type="submit" class="btn btn-primary">Add Recipe!</button>
+      <button type="button" id="loadSample" class="btn btn-secondary">Load Example!</button>
+    </form>
+    <!-- Export Button -->
+      <button class="btn btn-info mt-3" id="exportData">Export Data!</button>
 
+    <br><br>
+    <strong></strong><h1>Recipes</h1><strong></strong>
+    <br>
+    <div id="data-container" class="mb-4"></div>
+
+    
+    </div>
+  <!-- Footer -->
 <!-- FORMAT MADE BY mdboostrap.com -->
 <footer class=" d-flex flex-wrap text-light justify-content-center bg-dark mt-auto pt-3">
   <section class="">
@@ -55,7 +114,7 @@
         <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
           <!-- Content -->
           <h6 class="text-uppercase fw-bold mb-4">
-            <i class="fas fa-gem me-3"></i>Easy Space Seal
+            <i class="fas fa-gem me-3"></i>Seal Chef's Questionable Recipes
           </h6>
           <p>
             Here you can find the source code, wireframe, Wave, and NU valiator for this site. You can also find the creators through their Github and Codepen. 
@@ -67,7 +126,7 @@
         <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
           <!-- Links -->
           <h6 class="text-uppercase fw-bold mb-4">
-            Easy Code
+            Fun Code Information!
           </h6>
           <p>
             <a href="https://validator.nu/?doc=https%3A%2F%2Fkaden-trousdale.github.io%2Fdev-easy-project%2F" target="_blank" class="text-reset">Nu Validator</a>
@@ -89,16 +148,6 @@
           </h6>
           <p>
             <a href="https://github.com/Kaden-Trousdale" class="text-reset" target="_blank">Kaden Trousdale</a>
-          </p>
-          <p>
-            <a href="https://github.com/jacobfielder" class="text-reset" target="_blank">Jacob Fielder</a>
-          </p>
-          <p>
-            <a href="https://github.com/Dwells2003" class="text-reset" target="_blank">Daniel Wells</a>
-          </p>
-          <p>
-            <a href="https://github.com/SSenecal01" class="text-reset" target="_blank">Samuel Senecal</a>
-          </p>
         </div>
         <!-- Grid column -->
 
@@ -113,9 +162,9 @@
   </section>
 </footer>
 
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js'></script>
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.14.1/jquery-ui.min.js'></script>
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js'></script>
-  <script  src="scripts/script.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="scripts/script.js"></script>
 </body>
 </html>
