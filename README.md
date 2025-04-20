@@ -40,18 +40,6 @@ The idea was to create a parody recipe site where users could submit absurd or *
 
 ---
 
-## 🖼️ Screenshots & Inspirations
-
-### Screenshot of This App  
-![Screenshot of Wireframe](images/Wireframe.png)  
-
-
-### Real App Inspirations  
-- **Login Modal Inspiration:** [Bootstrap Modal Examples](https://getbootstrap.com/docs/5.3/components/modal/)  
-- **Card UI Inspiration:** [Codepen Recipe Card Layout](https://codepen.io)
-
----
-
 ## 💻 Code Sample
 
 ```js
